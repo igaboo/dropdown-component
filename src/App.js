@@ -30,6 +30,7 @@ export default function App() {
     menu6: true,
     menu7: true,
     menu8: true,
+    menu9: true,
   });
 
   const openMenu = (menu) => {
@@ -330,11 +331,33 @@ export default function App() {
           />
         </DropdownWrapper>
         <DropdownWrapper
+          menu="menu9"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu9}
+          icon={faCheese}
+        >
+          <DropdownMenu
+            buttons={[
+              {
+                icon: faCarrot,
+                color: "215, 51, 51",
+                text: "Carrot!",
+              },
+            ]}
+            closeMenu={() => {
+              closeMenu("menu9");
+            }}
+            collapsed={menuState.menu9}
+            position="bottom-center"
+          />
+        </DropdownWrapper>
+        <DropdownWrapper
           menu="menu8"
           openMenu={openMenu}
           closeMenu={closeMenu}
           state={menuState.menu8}
-          icon={faBan}
+          icon={faPenToSquare}
         >
           <DropdownMenu
             buttons={[
@@ -371,7 +394,7 @@ export default function App() {
           openMenu={openMenu}
           closeMenu={closeMenu}
           state={menuState.menu6}
-          icon={faBan}
+          icon={faCookie}
         >
           <DropdownMenu
             buttons={[
