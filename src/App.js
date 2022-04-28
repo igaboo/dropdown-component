@@ -66,12 +66,12 @@ export default function App() {
               },
               {
                 icon: faCheese,
-                color: "219, 199, 15",
+                color: "191, 168, 33",
                 text: "Cheese",
               },
               {
                 icon: faBottleWater,
-                color: "83, 165, 202",
+                color: "11, 59, 156",
                 text: "Water",
               },
               {
@@ -422,7 +422,9 @@ const DropdownWrapper = ({ state, menu, icon, openMenu, children }) => {
       <FontAwesomeIcon
         icon={icon}
         size="lg"
-        style={{ color: !state && "var(--active)" }}
+        style={{
+          color: !state && "var(--active)",
+        }}
         onClick={() => openMenu(menu)}
       />
       {children}
