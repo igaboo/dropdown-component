@@ -8,6 +8,8 @@ export default function DropdownMenu({
   closeMenu,
   collapsed,
   position,
+  iconsOnly,
+  textOnly,
 }) {
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -43,7 +45,8 @@ export default function DropdownMenu({
   } else if (position === "top-center") {
     styles = {
       transformOrigin: "50% 0%",
-      left: "-3.5rem",
+      transform: "translate(-50%)",
+      left: "50%",
       marginTop: ".5rem",
     };
   } else if (position === "bottom-left") {
@@ -56,9 +59,9 @@ export default function DropdownMenu({
   } else if (position === "bottom-center") {
     styles = {
       transformOrigin: "50% 100%",
-      left: "-3.5rem",
+      left: "50%",
       top: "100%",
-      transform: "translate(0, calc(-100% + -2rem))",
+      transform: "translate(-50%, calc(-100% + -2rem))",
     };
   } else if (position === "bottom-right") {
     styles = {
@@ -68,6 +71,14 @@ export default function DropdownMenu({
       transform: "translate(0, calc(-100% + -2rem))",
     };
   }
+
+  if (iconsOnly || textOnly) {
+    styles["width"] = "auto";
+    styles["alignItems"] = "center";
+  } else {
+    styles["width"] = "8rem";
+  }
+
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
@@ -86,6 +97,8 @@ export default function DropdownMenu({
               icon={btn.icon}
               color={btn.color}
               func={btn.func}
+              iconsOnly={iconsOnly}
+              textOnly={textOnly}
             />
           );
         })}
@@ -94,7 +107,7 @@ export default function DropdownMenu({
   );
 }
 
-const Button = ({ text, icon, color, func }) => {
+const Button = ({ text, icon, color, func, iconsOnly, textOnly }) => {
   const changeBackground = (e) => {
     !color
       ? (e.target.style.backgroundColor = "#f2f2f2")
@@ -108,17 +121,20 @@ const Button = ({ text, icon, color, func }) => {
     <button
       style={{
         color: `rgba(${color}, 1)`,
+        justifyContent: `${textOnly || iconsOnly ? "center" : "space-between"}`,
       }}
       onMouseEnter={(e) => changeBackground(e)}
       onMouseLeave={(e) => removeBackground(e)}
       onClick={func}
     >
-      <FontAwesomeIcon
-        style={{ color: `rgba(${color}, 1)` }}
-        icon={icon}
-        size="lg"
-      />
-      {text}
+      {!textOnly && (
+        <FontAwesomeIcon
+          style={{ color: `rgba(${color}, 1)` }}
+          icon={icon}
+          size="lg"
+        />
+      )}
+      {!iconsOnly && text}
     </button>
   );
 };
