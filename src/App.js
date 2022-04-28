@@ -20,7 +20,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function App() {
+export default function App() {
   const [menuState, setMenuState] = useState({
     menu1: true,
     menu2: true,
@@ -43,13 +43,13 @@ function App() {
   return (
     <main>
       <header>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faAppleWhole}
-            size="lg"
-            style={{ color: !menuState.menu1 && "var(--active)" }}
-            onClick={() => openMenu("menu1")}
-          />
+        <DropdownWrapper
+          menu="menu1"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu1}
+          icon={faAppleWhole}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -83,14 +83,14 @@ function App() {
             collapsed={menuState.menu1}
             position="top-left"
           />
-        </div>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faFolderPlus}
-            size="lg"
-            style={{ color: !menuState.menu3 && "var(--active)" }}
-            onClick={() => openMenu("menu3")}
-          />
+        </DropdownWrapper>
+        <DropdownWrapper
+          menu="menu3"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu3}
+          icon={faFolderPlus}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -119,15 +119,14 @@ function App() {
             collapsed={menuState.menu3}
             position="top-center"
           />
-        </div>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faEllipsis}
-            size="lg"
-            style={{ color: !menuState.menu2 && "var(--active)" }}
-            onClick={() => openMenu("menu2")}
-          />
-
+        </DropdownWrapper>
+        <DropdownWrapper
+          menu="menu2"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu2}
+          icon={faStar}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -149,7 +148,7 @@ function App() {
             collapsed={menuState.menu2}
             position="top-right"
           />
-        </div>
+        </DropdownWrapper>
       </header>
       <section>
         <h1>This is my popout component example page.</h1>
@@ -158,14 +157,13 @@ function App() {
         </p>
       </section>
       <footer>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faEllipsis}
-            size="lg"
-            style={{ color: !menuState.menu4 && "var(--active)" }}
-            onClick={() => openMenu("menu4")}
-          />
-
+        <DropdownWrapper
+          menu="menu4"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu4}
+          icon={faEllipsis}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -211,15 +209,14 @@ function App() {
             collapsed={menuState.menu4}
             position="bottom-left"
           />
-        </div>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faBottleWater}
-            size="lg"
-            style={{ color: !menuState.menu5 && "var(--active)" }}
-            onClick={() => openMenu("menu5")}
-          />
-
+        </DropdownWrapper>
+        <DropdownWrapper
+          menu="menu5"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu5}
+          icon={faBottleWater}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -233,15 +230,14 @@ function App() {
             collapsed={menuState.menu5}
             position="bottom-center"
           />
-        </div>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faBan}
-            size="lg"
-            style={{ color: !menuState.menu7 && "var(--active)" }}
-            onClick={() => openMenu("menu7")}
-          />
-
+        </DropdownWrapper>
+        <DropdownWrapper
+          menu="menu7"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu7}
+          icon={faBan}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -332,15 +328,14 @@ function App() {
             collapsed={menuState.menu7}
             position="bottom-center"
           />
-        </div>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faBan}
-            size="lg"
-            style={{ color: !menuState.menu8 && "var(--active)" }}
-            onClick={() => openMenu("menu8")}
-          />
-
+        </DropdownWrapper>
+        <DropdownWrapper
+          menu="menu8"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu8}
+          icon={faBan}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -370,15 +365,14 @@ function App() {
             collapsed={menuState.menu8}
             position="bottom-center"
           />
-        </div>
-        <div className="dropdown-wrapper">
-          <FontAwesomeIcon
-            icon={faBan}
-            size="lg"
-            style={{ color: !menuState.menu6 && "var(--active)" }}
-            onClick={() => openMenu("menu6")}
-          />
-
+        </DropdownWrapper>
+        <DropdownWrapper
+          menu="menu6"
+          openMenu={openMenu}
+          closeMenu={closeMenu}
+          state={menuState.menu6}
+          icon={faBan}
+        >
           <DropdownMenu
             buttons={[
               {
@@ -393,10 +387,22 @@ function App() {
             collapsed={menuState.menu6}
             position="bottom-right"
           />
-        </div>
+        </DropdownWrapper>
       </footer>
     </main>
   );
 }
 
-export default App;
+const DropdownWrapper = ({ state, menu, icon, openMenu, children }) => {
+  return (
+    <div className="dropdown-wrapper">
+      <FontAwesomeIcon
+        icon={icon}
+        size="lg"
+        style={{ color: !state && "var(--active)" }}
+        onClick={() => openMenu(menu)}
+      />
+      {children}
+    </div>
+  );
+};

@@ -1,7 +1,7 @@
 import "./dropdown.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function DropdownMenu({
   buttons,
