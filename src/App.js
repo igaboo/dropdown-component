@@ -17,6 +17,11 @@ import {
   faPenToSquare,
   faRotateRight,
   faRotateLeft,
+  faCircleInfo,
+  faBookmark,
+  faPlus,
+  faHeart,
+  faHeartCrack,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -31,6 +36,11 @@ export default function App() {
     menu7: true,
     menu8: true,
     menu9: true,
+    menu10: true,
+    menu11: true,
+    menu12: true,
+    menu13: true,
+    menu14: true,
   });
 
   const openMenu = (menu) => {
@@ -148,14 +158,166 @@ export default function App() {
             }}
             collapsed={menuState.menu2}
             position="top-right"
+            iconsOnly
           />
         </DropdownWrapper>
       </header>
       <section>
-        <h1>This is my popout component example page.</h1>
+        <div className="head">
+          <h1>This is my popout component example page. </h1>
+          <DropdownWrapper
+            menu="menu10"
+            openMenu={openMenu}
+            closeMenu={closeMenu}
+            state={menuState.menu10}
+            icon={faCircleInfo}
+          >
+            <DropdownMenu
+              buttons={[
+                {
+                  icon: faFilter,
+                  text: "Filter",
+                },
+                {
+                  icon: faTrash,
+                  text: "Delete",
+                },
+                {
+                  icon: faBan,
+                  text: "Stop",
+                },
+              ]}
+              closeMenu={() => {
+                closeMenu("menu10");
+              }}
+              collapsed={menuState.menu10}
+              position="top-center"
+              iconsOnly
+            />
+          </DropdownWrapper>
+        </div>
+
         <p>
           Try clicking on some of the icons to see the modular settings menus!
         </p>
+        <div className="card">
+          <header>
+            <h2>Example card</h2>
+            <p>This is an example of a card with a few buttons.</p>
+          </header>
+
+          <footer>
+            <DropdownWrapper
+              menu="menu11"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu11}
+              icon={faEllipsis}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    icon: faFilter,
+                    text: "Filter",
+                  },
+                  {
+                    icon: faTrash,
+                    text: "Delete",
+                  },
+                  {
+                    icon: faBan,
+                    text: "Stop",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu11");
+                }}
+                collapsed={menuState.menu11}
+                position="bottom-left"
+              />
+            </DropdownWrapper>
+            <DropdownWrapper
+              menu="menu13"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu13}
+              icon={faPlus}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    icon: faFilter,
+                    text: "Filter",
+                  },
+                  {
+                    icon: faTrash,
+                    text: "Delete",
+                  },
+                  {
+                    icon: faBan,
+                    text: "Stop",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu13");
+                }}
+                collapsed={menuState.menu13}
+                position="bottom-center"
+              />
+            </DropdownWrapper>
+            <DropdownWrapper
+              menu="menu14"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu14}
+              icon={faHeart}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    icon: faHeart,
+                    color: "288,47,47",
+                    text: "Like",
+                  },
+                  {
+                    icon: faHeartCrack,
+                    color: "43,47,161",
+                    text: "Hate",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu14");
+                }}
+                collapsed={menuState.menu14}
+                position="bottom-center"
+              />
+            </DropdownWrapper>
+            <DropdownWrapper
+              menu="menu12"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu12}
+              icon={faBookmark}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    text: "Favorites",
+                  },
+                  {
+                    text: "Notes",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu12");
+                }}
+                collapsed={menuState.menu12}
+                position="bottom-right"
+                textOnly
+              />
+            </DropdownWrapper>
+          </footer>
+        </div>
       </section>
       <footer>
         <DropdownWrapper
@@ -328,6 +490,7 @@ export default function App() {
             }}
             collapsed={menuState.menu7}
             position="bottom-center"
+            iconsOnly
           />
         </DropdownWrapper>
         <DropdownWrapper
@@ -387,6 +550,7 @@ export default function App() {
             }}
             collapsed={menuState.menu8}
             position="bottom-center"
+            textOnly
           />
         </DropdownWrapper>
         <DropdownWrapper
@@ -425,6 +589,7 @@ const DropdownWrapper = ({ state, menu, icon, openMenu, children }) => {
         style={{
           color: !state && "var(--active)",
         }}
+        className="btn-icon"
         onClick={() => openMenu(menu)}
       />
       {children}
