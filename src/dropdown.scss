@@ -94,8 +94,8 @@ header {
 section {
   padding: 1rem;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr;
 
   // justify-content: center;
 
@@ -162,14 +162,22 @@ footer {
   visibility: visible;
 }
 
-.card {
-  margin-top: auto;
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  margin: 5rem;
+}
+
+.card {
   border-radius: 10px;
   border: 1px solid $accent;
 
   width: fit-content;
   height: 20rem;
+
+  margin: auto;
 
   display: flex;
   flex-direction: column;
