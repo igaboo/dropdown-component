@@ -44,11 +44,25 @@ export default function App() {
   });
 
   const openMenu = (menu) => {
-    setMenuState({ ...menuState, [menu]: false });
+    const newMenus = {
+      ...menuState,
+    };
+
+    for (var i in newMenus) newMenus[i] = true;
+    newMenus[menu] = false;
+
+    setMenuState(newMenus);
   };
 
-  const closeMenu = (menu) => {
-    setMenuState({ ...menuState, [menu]: true });
+  const closeMenu = (test) => {
+    const newMenus = {
+      ...menuState,
+    };
+
+    console.log(test);
+
+    for (var i in newMenus) newMenus[i] = true;
+    setMenuState(newMenus);
   };
 
   return (
@@ -163,43 +177,46 @@ export default function App() {
         </DropdownWrapper>
       </header>
       <section>
-        <div className="head">
-          <h1>This is my popout component example page. </h1>
-          <DropdownWrapper
-            menu="menu10"
-            openMenu={openMenu}
-            closeMenu={closeMenu}
-            state={menuState.menu10}
-            icon={faCircleInfo}
-          >
-            <DropdownMenu
-              buttons={[
-                {
-                  icon: faFilter,
-                  text: "Filter",
-                },
-                {
-                  icon: faTrash,
-                  text: "Delete",
-                },
-                {
-                  icon: faBan,
-                  text: "Stop",
-                },
-              ]}
-              closeMenu={() => {
-                closeMenu("menu10");
-              }}
-              collapsed={menuState.menu10}
-              position="top-center"
-              iconsOnly
-            />
-          </DropdownWrapper>
+        <div className="centered">
+          <div className="head">
+            <h1>This is my popout component example page. </h1>
+            <DropdownWrapper
+              menu="menu10"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu10}
+              icon={faCircleInfo}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    icon: faFilter,
+                    text: "Filter",
+                  },
+                  {
+                    icon: faTrash,
+                    text: "Delete",
+                  },
+                  {
+                    icon: faBan,
+                    text: "Stop",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu10");
+                }}
+                collapsed={menuState.menu10}
+                position="bottom-center"
+                iconsOnly
+              />
+            </DropdownWrapper>
+          </div>
+
+          <p>
+            Try clicking on some of the icons to see the modular settings menus!
+          </p>
         </div>
 
-        <p>
-          Try clicking on some of the icons to see the modular settings menus!
-        </p>
         <div className="card">
           <header>
             <h2>Example card</h2>

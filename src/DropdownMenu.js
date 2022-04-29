@@ -14,16 +14,14 @@ export default function DropdownMenu({
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          closeMenu();
-        }
+        !collapsed && closeMenu();
       }
 
       document.addEventListener("mouseup", handleClickOutside);
       return () => {
         document.removeEventListener("mouseup", handleClickOutside);
       };
-    }, [ref]);
+    }, [collapsed]);
   }
 
   let styles = {
