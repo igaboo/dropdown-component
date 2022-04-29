@@ -17,11 +17,13 @@ import {
   faPenToSquare,
   faRotateRight,
   faRotateLeft,
-  faCircleInfo,
   faBookmark,
   faPlus,
   faHeart,
   faHeartCrack,
+  faQuestion,
+  faPortrait,
+  faShare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -41,6 +43,8 @@ export default function App() {
     menu12: true,
     menu13: true,
     menu14: true,
+    menu15: true,
+    menu16: true,
   });
 
   const openMenu = (menu) => {
@@ -171,56 +175,29 @@ export default function App() {
               closeMenu("menu2");
             }}
             collapsed={menuState.menu2}
-            position="top-right"
+            position="top-center"
             iconsOnly
           />
         </DropdownWrapper>
       </header>
       <section>
-        <div className="centered">
-          <div className="head">
-            <h1>This is my popout component example page. </h1>
-            <DropdownWrapper
-              menu="menu10"
-              openMenu={openMenu}
-              closeMenu={closeMenu}
-              state={menuState.menu10}
-              icon={faCircleInfo}
-            >
-              <DropdownMenu
-                buttons={[
-                  {
-                    icon: faFilter,
-                    text: "Filter",
-                  },
-                  {
-                    icon: faTrash,
-                    text: "Delete",
-                  },
-                  {
-                    icon: faBan,
-                    text: "Stop",
-                  },
-                ]}
-                closeMenu={() => {
-                  closeMenu("menu10");
-                }}
-                collapsed={menuState.menu10}
-                position="bottom-center"
-                iconsOnly
-              />
-            </DropdownWrapper>
-          </div>
-
-          <p>
-            Try clicking on some of the icons to see the modular settings menus!
-          </p>
-        </div>
-
         <div className="card">
           <header>
-            <h2>Example card</h2>
-            <p>This is an example of a card with a few buttons.</p>
+            <h2>dropdown-component</h2>
+            <p>
+              This is an example of the{" "}
+              <a href="https://github.com/igaboo/dropdown-component">
+                dropdown-component.
+              </a>
+              <br /> It accepts the following parameters:
+            </p>
+            <br />
+            <code>
+              <p>buttons = {"[ an array of objects ]"}</p>
+              <p>position = " a string "</p>
+              <p>iconsOnly = {"{ true || false }"}</p>
+              <p>textOnly = {"{ true || false }"}</p>
+            </code>
           </header>
 
           <footer>
@@ -293,12 +270,12 @@ export default function App() {
                 buttons={[
                   {
                     icon: faHeart,
-                    color: "288,47,47",
+                    color: "232,84,84",
                     text: "Like",
                   },
                   {
                     icon: faHeartCrack,
-                    color: "43,47,161",
+                    color: "114,84,232",
                     text: "Hate",
                   },
                 ]}
@@ -334,6 +311,71 @@ export default function App() {
               />
             </DropdownWrapper>
           </footer>
+        </div>
+        <div className="card">
+          <header>
+            <p>Example of informational</p>
+            <DropdownWrapper
+              menu="menu15"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu15}
+              icon={faQuestion}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    text: "This is an example of an information popup.",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu15");
+                }}
+                collapsed={menuState.menu15}
+                position="bottom-right"
+                textOnly
+              />
+            </DropdownWrapper>
+          </header>
+        </div>
+        <div className="card">
+          <header>
+            <span>
+              <h4>Tim Apple</h4>
+              <p>@mrapple</p>
+            </span>
+
+            <DropdownWrapper
+              menu="menu16"
+              openMenu={openMenu}
+              closeMenu={closeMenu}
+              state={menuState.menu16}
+              icon={faEllipsis}
+            >
+              <DropdownMenu
+                buttons={[
+                  {
+                    icon: faShare,
+                    text: "Share",
+                  },
+                  {
+                    icon: faPortrait,
+                    text: "Follow",
+                  },
+                  {
+                    icon: faBan,
+                    color: "215, 51, 51",
+                    text: "Block",
+                  },
+                ]}
+                closeMenu={() => {
+                  closeMenu("menu16");
+                }}
+                collapsed={menuState.menu16}
+                position="bottom-right"
+              />
+            </DropdownWrapper>
+          </header>
         </div>
       </section>
       <footer>
@@ -400,8 +442,7 @@ export default function App() {
           <DropdownMenu
             buttons={[
               {
-                icon: faBottleWater,
-                text: "Water",
+                text: "This could even be used as a popup component.",
               },
             ]}
             closeMenu={() => {
@@ -409,6 +450,7 @@ export default function App() {
             }}
             collapsed={menuState.menu5}
             position="bottom-center"
+            textOnly
           />
         </DropdownWrapper>
         <DropdownWrapper
