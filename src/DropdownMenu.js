@@ -31,13 +31,13 @@ export default function DropdownMenu({
   if (position === "top-left") {
     styles = {
       transformOrigin: "0% 0%",
-      left: 0,
+      left: "-50%",
       marginTop: ".5rem",
     };
   } else if (position === "top-right") {
     styles = {
       transformOrigin: "100% 0%",
-      right: 0,
+      right: "-50%",
       marginTop: ".5rem",
     };
   } else if (position === "top-center") {
@@ -50,7 +50,7 @@ export default function DropdownMenu({
   } else if (position === "bottom-left") {
     styles = {
       transformOrigin: "0% 100%",
-      left: 0,
+      left: "-50%",
       top: "100%",
       transform: "translate(0, calc(-100% + -2rem))",
     };
@@ -64,7 +64,7 @@ export default function DropdownMenu({
   } else if (position === "bottom-right") {
     styles = {
       transformOrigin: "100% 0%",
-      right: 0,
+      right: "-50%",
       top: "100%",
       transform: "translate(0, calc(-100% + -2rem))",
     };
@@ -108,8 +108,8 @@ export default function DropdownMenu({
 const Button = ({ text, icon, color, func, iconsOnly, textOnly }) => {
   const changeBackground = (e) => {
     !color
-      ? (e.target.style.backgroundColor = "#f2f2f2")
-      : (e.target.style.backgroundColor = `rgba(${color}, .1)`);
+      ? (e.target.style.backgroundColor = "var(--hover")
+      : (e.target.style.backgroundColor = `rgba(${color}, .2)`);
   };
   const removeBackground = (e) => {
     e.target.style.backgroundColor = "transparent";
