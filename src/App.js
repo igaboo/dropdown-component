@@ -24,6 +24,8 @@ import {
   faQuestion,
   faPortrait,
   faShare,
+  faSquareCaretDown,
+  faSquareCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -77,7 +79,7 @@ export default function App() {
           openMenu={openMenu}
           closeMenu={closeMenu}
           state={menuState.menu1}
-          icon={faAppleWhole}
+          icon={menuState.menu1 ? faHeart : faHeartCrack}
         >
           <DropdownMenu
             buttons={[
@@ -91,21 +93,25 @@ export default function App() {
                 icon: faCarrot,
                 color: "223, 132, 48",
                 text: "Carrot",
+                func: () => alert("carrot function"),
               },
               {
                 icon: faCheese,
                 color: "191, 168, 33",
                 text: "Cheese",
+                func: () => alert("cheese function"),
               },
               {
                 icon: faBottleWater,
                 color: "11, 59, 156",
                 text: "Water",
+                func: () => alert("water function"),
               },
               {
                 icon: faCookie,
                 color: "180, 141, 75",
                 text: "Cookie",
+                func: () => alert("cookie function"),
               },
             ]}
             closeMenu={() => closeMenu("menu1")}
@@ -154,7 +160,7 @@ export default function App() {
           openMenu={openMenu}
           closeMenu={closeMenu}
           state={menuState.menu2}
-          icon={faStar}
+          icon={faSquareCaretDown}
         >
           <DropdownMenu
             buttons={[
@@ -183,6 +189,8 @@ export default function App() {
       <section>
         <div className="card">
           <header>
+            <p className="credit">Made with {"<3"} by Jaden</p>
+
             <h2>dropdown-component</h2>
             <p>
               This is an example of the{" "}
@@ -437,7 +445,7 @@ export default function App() {
           openMenu={openMenu}
           closeMenu={closeMenu}
           state={menuState.menu5}
-          icon={faBottleWater}
+          icon={faSquareCaretUp}
         >
           <DropdownMenu
             buttons={[
